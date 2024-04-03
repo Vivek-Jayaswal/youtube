@@ -7,6 +7,7 @@ body{
     width: 100vw;
     background-color: #181818;
     overflow-y: scroll;
+    border: 2px solid red;
 }
 
 #navbar {
@@ -76,16 +77,21 @@ body{
 }
 
 
+#video-section{
+    display: flex;
+    justify-content: space-around;
+}
+
 #video-container{
     padding: 20px;
 }
 
 #channel-info{
-    width: 800px;
+    width: 1000px;
     margin: 20px;
     color: white;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     gap: 30px;
     border-bottom: 1px solid rgb(165, 162, 162);
 
@@ -127,7 +133,7 @@ body{
 }
 
 #video-details{
-    width: 800px;
+    width: 1000px;
     margin: 20px;
     color: white;
     border-bottom: 1px solid rgb(165, 162, 162);
@@ -159,8 +165,8 @@ body{
     }
 }
 
-
 #comment-container{
+    width: 1000px;
     color: white;
     .comment{
         margin: 30px;
@@ -192,5 +198,31 @@ body{
     }
 }
 
+.recommended{
+    margin: 20px;
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    .recommended-video{
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        justify-content: space-between;
+        align-items:flex-start;
+        gap: 20px;
+        p{
+            margin: 10px;
+        }
+        img{
+            width: 200px;
+            height: 150px;
 
+        }
+        .channel-name{
+            color: #464646;
+            font-size: 12px;
+        }
+    }
+}
 

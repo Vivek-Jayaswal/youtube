@@ -1,7 +1,8 @@
 // avi sir
 // const API_KEY = "AIzaSyDI7xuxOTRzMaDfaecSlpFJfHOKQV04dnk"
-
-const API_KEY = "AIzaSyAleIvD7GbP2YXIcJyxkS8ZztIycWLmwCE"
+// janu
+// const API_KEY = "AIzaSyAleIvD7GbP2YXIcJyxkS8ZztIycWLmwCE"
+const API_KEY = "AIzaSyDmfmgSetHDIZeO8dj1jDxdhvA03ojlMJQ"
 const BASE_URL = "https://www.googleapis.com/youtube/v3"
 
 
@@ -17,7 +18,7 @@ function showVideo(videos) {
         div.className = "video-templet";
         div.innerHTML = `
             <a href="/video.html?videoId=${video.id.videoId}">
-                <img src='${thumbnail}'/>
+                <img src='${thumbnail}' alt="${title}"/>
                 <div>
                     <p>${title}</p>
                 </div>
