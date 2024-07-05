@@ -1,9 +1,9 @@
 // //avi sir
-// const API_KEY = "AIzaSyDI7xuxOTRzMaDfaecSlpFJfHOKQV04dnk"
+const API_KEY = "AIzaSyDI7xuxOTRzMaDfaecSlpFJfHOKQV04dnk"
 // // janu
 // const API_KEY = "AIzaSyAleIvD7GbP2YXIcJyxkS8ZztIycWLmwCE"
 
-const API_KEY = "AIzaSyDmfmgSetHDIZeO8dj1jDxdhvA03ojlMJQ"
+// const API_KEY = "AIzaSyDmfmgSetHDIZeO8dj1jDxdhvA03ojlMJQ"
 const BASE_URL = "https://www.googleapis.com/youtube/v3"
 
 const video_container = document.getElementById("video-container");
