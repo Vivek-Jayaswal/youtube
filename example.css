@@ -1,0 +1,27 @@
+.dark-theam{
+
+    .top-bg-color{
+        background-color: #000000;
+        color: white;
+    }
+
+    .nav-bg-color {
+        background-color: #212121;
+        color: white;
+    }
+    .rs-bg-color {
+        background-color: #000000;
+        color: white;
+        a{
+            color: white;
+        }
+    }
+
+    .ls-bg-color {
+        background-color: #212121;
+        color: white;
+        a{
+            color: white;
+        }
+    }
+}

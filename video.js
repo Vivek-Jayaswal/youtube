@@ -18,14 +18,13 @@ window.addEventListener("load", () => {
     }
 })
 
-console.log("youtube",YT);
+console.log("youtube", YT);
 
 function loadVideo(videoId) {
     if (YT) {
         new YT.Player('video-container', {
-            height: "500",
-            width: "1000",
-            videoId: videoId
+            // Width : "1000",
+            videoId: videoId,
         });
     }
 }
@@ -40,14 +39,14 @@ async function getVideoDetails(videoId) {
         const data = await response.json();
         console.log("details", data);
         displayVideoDetails(data);
-        getChannelDetails(data.items[0].snippet.channelId,videoId);
+        getChannelDetails(data.items[0].snippet.channelId, videoId);
     }
     catch (error) {
         console.log("Error in fetching video details ", error);
     }
 }
 
-async function getChannelDetails(channelId,videoId) {
+async function getChannelDetails(channelId, videoId) {
     try {
         const response = await fetch(`${BASE_URL}/channels?key=${API_KEY}&part=snippet&part=statistics&id=${channelId}`)
         if (!response.ok) {
@@ -55,7 +54,7 @@ async function getChannelDetails(channelId,videoId) {
         }
         const data = await response.json();
         console.log("channel info", data);
-        displayChannelInfo(data,channelId,videoId);
+        displayChannelInfo(data, channelId, videoId);
         loadRecommendedVideo(data.items[0].snippet.title);
     } catch (error) {
         console.log("Error in fetching Channel details ", error);
@@ -71,7 +70,7 @@ async function loadComment(videoId) {
         const data = await response.json();
         console.log("comment", data);
         displayComment(data.items);
-        
+
     } catch (error) {
         console.log("Error in loading comment", error);
     }
@@ -85,9 +84,9 @@ async function loadRecommendedVideo(channelName) {
             throw new Error(`HTTP error! status: ${res.status}`)
         }
         const data = await res.json()
-        console.log("recoomend",data);
+        console.log("recoomend", data);
         displayRecommendeVideo(data.items)
-        
+
     } catch (error) {
         console.log("Error in loading recommended video", error);
     }
@@ -95,35 +94,33 @@ async function loadRecommendedVideo(channelName) {
 
 function displayVideoDetails(details) {
     const video_details = document.getElementById("video-details");
-
     const title = document.createElement("div");
     title.innerHTML = `
         <h4 class="video-title">${details.items[0].snippet.title}</h4>
     `
     video_details.appendChild(title);
-
-
     let like = details.items[0].statistics.viewCount;
-    console.log(like / like);
     const stat = document.createElement("div");
     stat.className = "video";
     stat.innerHTML = `
+        
         <div class="left-part-video-details">
             <p>${details.items[0].statistics.viewCount} views</p>
             <p>. ${details.items[0].snippet.publishedAt}</p>
         </div>
         <div class="right-part-video-details">
-            <a href="#" id="like">${details.items[0].statistics.likeCount} like</a>
-            <a href="#" id="dislike">dislike</a>
+            <a href="#" id="like">${details.items[0].statistics.likeCount} <span class="material-icons">thumb_up</span></a>
+            <a href="#" id="dislike"><span class="material-icons">thumb_down</span></a>
             <a href="#" id="share">SHARE</a>
             <a href="#" id="save">SAVE</a>
             <a href="#" id="more">...</a>
         </div>
+    
     `
     video_details.appendChild(stat);
 }
 
-function displayChannelInfo(details,channelId,videoId) {
+function displayChannelInfo(details, channelId, videoId) {
     const channleInfo = document.getElementById("channel-info");
     // console.log("display channel id",channelId,"video Id",videoId);
     const channelLogo = document.createElement("div")
@@ -143,7 +140,7 @@ function displayChannelInfo(details,channelId,videoId) {
                 </div>
                 <button id="btn">Subscribe</button>
             </div>
-            <div class="discription">
+            <div class="discription-subs">
                 ${details.items[0].snippet.description}
             </div>
     `
@@ -175,7 +172,7 @@ function displayComment(details) {
 }
 
 function displayRecommendeVideo(recommendedVideo) {
-    console.log("display recomend",recommendedVideo);
+    console.log("display recomend", recommendedVideo);
     const container = document.getElementById("recomended-video");
     container.innerHTML = "";
     recommendedVideo.map((video) => {
@@ -184,12 +181,11 @@ function displayRecommendeVideo(recommendedVideo) {
         const videoId = video.id.videoId;
         const title = video.snippet.title;
         const thumbnail = video.snippet.thumbnails.medium.url;
-        const videoCard = document.createElement("div");
-        videoCard.className = "recommended";
-        videoCard.innerHTML = `
+        const anchor = document.createElement("a")
+        anchor.innerHTML = `
             <a href="./video.html?videoId=${videoId}" class="recommended-video">
                 <img src="${thumbnail}" alt="${title}">
-                <div>
+                <div class="discription">
                     <p>${title}</p>
                     <div class="channel-name">
                         <p>${channelname}</p>
@@ -198,7 +194,7 @@ function displayRecommendeVideo(recommendedVideo) {
                 </div>
             </a>
         `
-        container.appendChild(videoCard);
+        container.appendChild(anchor);
     })
 }
 
@@ -207,7 +203,7 @@ function displayRecommendeVideo(recommendedVideo) {
 const input = document.getElementById("input");
 const button = document.getElementById("btn")
 
-button.addEventListener("click",()=>{
+button.addEventListener("click", () => {
     const searchQuery = input.value;
     console.log(searchQuery);
     loadRecommendedVideo(searchQuery);

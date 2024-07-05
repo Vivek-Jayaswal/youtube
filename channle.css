@@ -1,6 +1,9 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
     margin: 0px;
     padding: 0px;
+    font-family: "Inter", sans-serif;
 }
 
 body{
@@ -10,17 +13,17 @@ body{
 }
 
 .video-info{
-    width:800px;
+    width:60vw;
     display: flex;
     justify-content: space-around;
     gap: 20px;
     align-items: start;
+    /* border: 2px solid red; */
 
     img{
         width: 350px;
         height: 300px;
         border-radius: 10px;
-        /* object-fit: cover; */
     }
 }
 
@@ -75,6 +78,8 @@ body{
     row-gap: 20px;
     .video{
         cursor: pointer;
+        text-decoration: none;
+        color: white;
         img{
             border-radius: 10px;
         }
@@ -92,5 +97,26 @@ body{
         display: flex;
         align-items: center;
         cursor: pointer;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .video-info{
+        width:100%;
+        flex-wrap: wrap;
+        img{
+            width: 100%;
+        }  
+    }
+
+    #video-container{
+        width: 100%;
+        grid-template-columns: 1fr;
+        .video{
+            img{
+                width: 100%;
+            }
+        }
     }
 }

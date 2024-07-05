@@ -52,6 +52,7 @@ function displayVideoDetails(details) {
         <button class="btn">Show More</button>
     </div>
     `
+    
     container.appendChild(div);
 
         const description = document.getElementById("description");
@@ -115,12 +116,13 @@ function displayOtherVideos(videos) {
     console.log(videos);
     const container = document.getElementById("video-container");
     videos.map((video)=>{
-        const div = document.createElement("div")
-        div.className = "video"
-        div.innerHTML = `
+        const anchor = document.createElement("a")
+        anchor.href = `/video.html?videoId=${video.id.videoId}`
+        anchor.className = "video"
+        anchor.innerHTML = `
             <img src="${video.snippet.thumbnails.medium.url}" alt="">
             <p>${video.snippet.title}</p>
         `
-        container.appendChild(div);
+        container.appendChild(anchor);
     })
 }
