@@ -316,6 +316,14 @@ body {
 
     #video-details {
         width: 100%;
+        .video {
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .left-part-video-details{
+            justify-content: space-between;
+        }
     }
 
     #channel-info{
